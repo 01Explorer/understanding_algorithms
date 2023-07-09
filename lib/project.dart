@@ -16,3 +16,10 @@ int? binarySearch(List<int> list, int desiredNumber) {
 
   return null;
 }
+
+int recursiveFactorial(int value) {
+  if (value == 1) {
+    return 1;
+  }
+  return value * recursiveFactorial(value - 1);
+}
