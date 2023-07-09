@@ -5,7 +5,9 @@ import 'package:project/project.dart' as project;
 const int listSize = 25000000;
 int desiredNumber = Random().nextInt(25000000);
 
-void main(List<String> arguments) {}
+void main(List<String> arguments) {
+  recursiveSum();
+}
 
 void binarySearch() {
   List<int> intList = List.generate(listSize, (index) => ++index);
@@ -38,6 +40,13 @@ void binarySearch() {
 void recursiveFactorial() {
   final Stopwatch stopwatch = Stopwatch()..start();
   print(project.recursiveFactorial(100));
+  stopwatch.stop();
+  print(stopwatch.elapsedMilliseconds);
+}
+
+void recursiveSum() {
+  final Stopwatch stopwatch = Stopwatch()..start();
+  print(project.recursiveSum([0, 21, 3, 1, 6, 5, 81, 2, 14, 56, 32, 1, 9, 8]));
   stopwatch.stop();
   print(stopwatch.elapsedMilliseconds);
 }
