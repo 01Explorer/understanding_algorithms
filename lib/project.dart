@@ -31,3 +31,11 @@ int recursiveSum(List<int> array) {
   final List<int> newArray = [...array]..removeAt(0);
   return array[0] + recursiveSum(newArray);
 }
+
+int recursiveCount(List<int> array) {
+  if (array.isEmpty) {
+    return 0;
+  }
+  final List<int> newArray = [...array]..removeAt(0);
+  return 1 + recursiveCount(newArray);
+}
