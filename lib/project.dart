@@ -23,3 +23,11 @@ int recursiveFactorial(int value) {
   }
   return value * recursiveFactorial(value - 1);
 }
+
+int recursiveSum(List<int> array) {
+  if (array.isEmpty) {
+    return 0;
+  }
+  final List<int> newArray = [...array]..removeAt(0);
+  return array[0] + recursiveSum(newArray);
+}
