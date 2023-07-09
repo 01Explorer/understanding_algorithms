@@ -6,7 +6,7 @@ const int listSize = 25000000;
 int desiredNumber = Random().nextInt(25000000);
 
 void main(List<String> arguments) {
-  recursiveSum();
+  recursiveCount();
 }
 
 void binarySearch() {
@@ -47,6 +47,13 @@ void recursiveFactorial() {
 void recursiveSum() {
   final Stopwatch stopwatch = Stopwatch()..start();
   print(project.recursiveSum([0, 21, 3, 1, 6, 5, 81, 2, 14, 56, 32, 1, 9, 8]));
+  stopwatch.stop();
+  print(stopwatch.elapsedMilliseconds);
+}
+
+void recursiveCount() {
+  final Stopwatch stopwatch = Stopwatch()..start();
+  print(project.recursiveCount([0, 21, 3, 1, 6, 5, 81, 2, 14, 56, 32, 1, 9, 8]));
   stopwatch.stop();
   print(stopwatch.elapsedMilliseconds);
 }
