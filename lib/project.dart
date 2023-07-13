@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 int? binarySearch(List<int> list, int desiredNumber) {
   int highest = list.length - 1;
   int lowest = 0;
@@ -38,4 +40,27 @@ int recursiveCount(List<int> array) {
   }
   final List<int> newArray = [...array]..removeAt(0);
   return 1 + recursiveCount(newArray);
+}
+
+bool search(Map<String, List<String>> graph, String name) {
+  final searchQueue = Queue()..addAll(graph[name] ?? []);
+  final searched = List<String>.empty(growable: true);
+
+  while (searchQueue.isNotEmpty) {
+    final String person = searchQueue.removeFirst();
+    if (searched.contains(person) == false) {
+      if (_personIsSeller(person)) {
+        print('$person is a Mango seller!');
+        return true;
+      } else {
+        searchQueue.addAll(graph[person] ?? []);
+        searched.add(person);
+      }
+    }
+  }
+  return false;
+}
+
+bool _personIsSeller(String name) {
+  return name.endsWith('m');
 }
