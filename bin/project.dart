@@ -6,7 +6,7 @@ const int listSize = 25000000;
 int desiredNumber = Random().nextInt(25000000);
 
 void main(List<String> arguments) {
-  recursiveCount();
+  breadthFirstSearch();
 }
 
 void binarySearch() {
@@ -53,7 +53,26 @@ void recursiveSum() {
 
 void recursiveCount() {
   final Stopwatch stopwatch = Stopwatch()..start();
-  print(project.recursiveCount([0, 21, 3, 1, 6, 5, 81, 2, 14, 56, 32, 1, 9, 8]));
+  print(
+      project.recursiveCount([0, 21, 3, 1, 6, 5, 81, 2, 14, 56, 32, 1, 9, 8]));
   stopwatch.stop();
   print(stopwatch.elapsedMilliseconds);
+}
+
+void breadthFirstSearch() {
+  final graph = <String, List<String>>{};
+  graph.addAll(
+    <String, List<String>>{
+      'you': ['alice', 'bob', 'claire'],
+      'bob': ['anuj', 'peggy'],
+      'alice': ['peggy'],
+      'claire': ['thom', 'jonny'],
+      'anuj': [],
+      'peggy': [],
+      'thom': [],
+      'jonny': [],
+    },
+  );
+
+  project.search(graph, 'you');
 }
