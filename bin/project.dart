@@ -6,7 +6,7 @@ const int listSize = 25000000;
 int desiredNumber = Random().nextInt(25000000);
 
 void main(List<String> arguments) {
-  breadthFirstSearch();
+  voteHashMap();
 }
 
 void binarySearch() {
@@ -75,4 +75,28 @@ void breadthFirstSearch() {
   );
 
   project.search(graph, 'you');
+}
+
+void bookHashMap() {
+  final book = <String, double>{};
+  book.addAll(
+    {
+      'apple': 0.67,
+      'milk': 1.49,
+      'avocado': 1.49,
+    },
+  );
+
+  print(book);
+  print(book['apple']);
+  print(book['milk']);
+  print(book['avocado']);
+}
+
+void voteHashMap() {
+  final voted = <String, bool>{};
+
+  project.checkVoter('tom', voted);
+  project.checkVoter('mike', voted);
+  project.checkVoter('mike', voted);
 }
