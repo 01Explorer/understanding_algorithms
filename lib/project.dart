@@ -73,3 +73,40 @@ void checkVoter(String name, Map<String, bool> voted) {
     print('Let them vote');
   }
 }
+
+void djikstra(
+  Map<String, Map<String, double>> graph,
+  Map<String, double> costs,
+  Map<String, String?> parents,
+) {
+  final processeds = <String>[];
+  String? node = findTheCheapestOne(costs, processeds);
+
+  while (node != null) {
+    final cost = costs[node];
+    final neighbors = graph[node];
+    for (String neighbor in neighbors!.keys) {
+      final double newCost = cost! + neighbors[neighbor]!;
+      if (costs[neighbor]! > newCost) {
+        costs[neighbor] = newCost;
+        parents[neighbor] = node;
+      }
+    }
+    processeds.add(node);
+    node = findTheCheapestOne(costs, processeds);
+  }
+}
+
+String? findTheCheapestOne(Map<String, double> costs, List<String> processed) {
+  double cheapestCost = double.infinity;
+  String? cheapestNode;
+
+  for (String node in costs.keys) {
+    final double cost = costs[node]!;
+    if (cost < cheapestCost && !processed.contains(node)) {
+      cheapestCost = cost;
+      cheapestNode = node;
+    }
+  }
+  return cheapestNode;
+}
