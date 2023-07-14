@@ -6,7 +6,7 @@ const int listSize = 25000000;
 int desiredNumber = Random().nextInt(25000000);
 
 void main(List<String> arguments) {
-  voteHashMap();
+  djikstra();
 }
 
 void binarySearch() {
@@ -99,4 +99,40 @@ void voteHashMap() {
   project.checkVoter('tom', voted);
   project.checkVoter('mike', voted);
   project.checkVoter('mike', voted);
+}
+
+void djikstra() {
+  final graph = <String, Map<String, double>>{}..addAll(
+      {
+        'start': {
+          'a': 6,
+          'b': 2,
+        },
+        'a': {
+          'end': 1,
+        },
+        'b': {
+          'a': 3,
+          'end': 5,
+        },
+        'end': {},
+      },
+    );
+
+  final costs = <String, double>{
+    'a': 6,
+    'b': 2,
+    'end': double.infinity,
+  };
+
+  final parents = <String, String?>{
+    'a': 'start',
+    'b': 'start',
+    'end': null,
+  };
+
+  project.djikstra(graph, costs, parents);
+  print(graph);
+  print(costs);
+  print(parents);
 }
