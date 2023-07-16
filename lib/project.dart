@@ -110,3 +110,22 @@ String? findTheCheapestOne(Map<String, double> costs, List<String> processed) {
   }
   return cheapestNode;
 }
+
+Set<String> stationSet(
+    Set<String> coverStates, Map<String, Set<String>> stations) {
+  final finalStations = <String>{};
+  while (coverStates.isNotEmpty) {
+    String? bestStation;
+    Set<String> coveredStates = {};
+    for (String station in stations.keys) {
+      final covered = coverStates.intersection(stations[station] ?? {});
+      if (covered.length > coveredStates.length) {
+        bestStation = station;
+        coveredStates = covered;
+      }
+    }
+    coverStates.removeWhere((element) => coveredStates.contains(element));
+    finalStations.add(bestStation!);
+  }
+  return finalStations;
+}
