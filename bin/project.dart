@@ -6,7 +6,43 @@ const int listSize = 25000000;
 int desiredNumber = Random().nextInt(25000000);
 
 void main(List<String> arguments) {
-  djikstra();
+  stations();
+}
+
+void stations() {
+  final coverStates = {
+    'mt',
+    'wa',
+    'or',
+    'id',
+    'nv',
+    'ut',
+    'ca',
+    'az',
+  };
+
+  final stations = <String, Set<String>>{}..addAll(
+      {
+        'kone': {'id', 'nv', 'uy'},
+        'ktwo': {'wa', 'id', 'mt'},
+        'kthree': {'or', 'nv', 'ca'},
+        'kfour': {'nv', 'ut'},
+        'kfive': {'ca', 'az'},
+      },
+    );
+
+  final finalStations = project.stationSet(coverStates, stations);
+  print(finalStations);
+}
+
+void sets() {
+  final fruits = {'avocado', 'tomato', 'banana'};
+  final vegetables = {'beet', 'carrot', 'tomato'};
+
+  print(fruits.union(vegetables));
+  print(fruits.intersection(vegetables));
+  print(fruits.difference(vegetables));
+  print(vegetables.difference(fruits));
 }
 
 void binarySearch() {
