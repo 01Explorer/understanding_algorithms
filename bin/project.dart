@@ -6,11 +6,19 @@ const int listSize = 25000000;
 int desiredNumber = Random().nextInt(25000000);
 
 void main(List<String> arguments) {
-  longestCommonSubsequence('blue', 'clues');
+  longestCommonSubstring('blue', 'clues');
 }
 
 void longestCommonSubsequence(String word1, String word2) {
   final table = project.longestCommonSubsequence(word1, word2);
+
+  for (List<int> element in table) {
+    print(element);
+  }
+}
+
+void longestCommonSubstring(String word1, String word2) {
+  final table = project.longestCommonSubstring(word1, word2);
 
   for (List<int> element in table) {
     print(element);
