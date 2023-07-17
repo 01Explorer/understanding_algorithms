@@ -111,8 +111,7 @@ String? findTheCheapestOne(Map<String, double> costs, List<String> processed) {
   return cheapestNode;
 }
 
-Set<String> stationSet(
-    Set<String> coverStates, Map<String, Set<String>> stations) {
+Set<String> stationSet(Set<String> coverStates, Map<String, Set<String>> stations) {
   final finalStations = <String>{};
   while (coverStates.isNotEmpty) {
     String? bestStation;
@@ -133,8 +132,7 @@ Set<String> stationSet(
 List<List<int>> longestCommonSubsequence(String word1, String word2) {
   final tableWord1 = word1.split('');
   final tableWord2 = word2.split('');
-  final table = List.generate(
-      tableWord2.length, (index) => List<int>.filled(tableWord1.length, 0));
+  final table = List.generate(tableWord2.length, (index) => List<int>.filled(tableWord1.length, 0));
 
   for (int i = 0; i < tableWord1.length; i++) {
     for (int j = 0; j < tableWord2.length; j++) {
@@ -153,8 +151,7 @@ List<List<int>> longestCommonSubsequence(String word1, String word2) {
 List<List<int>> longestCommonSubstring(String word1, String word2) {
   final tableWord1 = word1.split('');
   final tableWord2 = word2.split('');
-  final table = List.generate(
-      tableWord2.length, (index) => List<int>.filled(tableWord1.length, 0));
+  final table = List.generate(tableWord2.length, (index) => List<int>.filled(tableWord1.length, 0));
 
   for (int i = 0; i < tableWord1.length; i++) {
     for (int j = 0; j < tableWord2.length; j++) {
@@ -166,4 +163,17 @@ List<List<int>> longestCommonSubstring(String word1, String word2) {
     }
   }
   return table;
+}
+
+List<int> quickSort(List<int> toOrder) {
+  if (toOrder.length < 2) {
+    return toOrder;
+  }
+  final int meio = toOrder.length ~/ 2;
+
+  final int pivot = toOrder[meio];
+  toOrder.removeAt(meio);
+  final List<int> lowers = List.from(toOrder.where((element) => element <= pivot));
+  final List<int> highers = List.from(toOrder.where((element) => element > pivot));
+  return quickSort(lowers) + [pivot] + quickSort(highers);
 }
