@@ -9,6 +9,13 @@ void main(List<String> arguments) {
   longestCommonSubstring('blue', 'clues');
 }
 
+void quickSort() {
+  final Stopwatch stopwatch = Stopwatch()..start();
+  print(project.quickSort([0, 21, 3, 1, 6, 5, 0, 81, 2, 14, 56, 32, 1, 9, 8]));
+  stopwatch.stop();
+  print(stopwatch.elapsedMilliseconds);
+}
+
 void longestCommonSubsequence(String word1, String word2) {
   final table = project.longestCommonSubsequence(word1, word2);
 
@@ -105,8 +112,7 @@ void recursiveSum() {
 
 void recursiveCount() {
   final Stopwatch stopwatch = Stopwatch()..start();
-  print(
-      project.recursiveCount([0, 21, 3, 1, 6, 5, 81, 2, 14, 56, 32, 1, 9, 8]));
+  print(project.recursiveCount([0, 21, 3, 1, 6, 5, 81, 2, 14, 56, 32, 1, 9, 8]));
   stopwatch.stop();
   print(stopwatch.elapsedMilliseconds);
 }
